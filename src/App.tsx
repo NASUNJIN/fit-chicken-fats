@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ChickenTable from './components/ChickenTable/ChickenTable';
 import ProductsFilter from './components/Products/ProductsFilter';
 import { ChickenData } from './types/ChickenData';
-import DemoPage from "./components/DemoPage";
 import './App.css';
 import DetailSideTable from "./components/Details/DetailSideTable";
 
