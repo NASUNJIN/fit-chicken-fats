@@ -15,23 +15,11 @@ const chickenSlice = createSlice({
     setData(state, action: PayloadAction<ChickenData[]>) {
       state.data = action.payload;
     },
-    toggleSelect(state, action: PayloadAction<ChickenData>) {
-      const isSelected = state.selected.find(
-        (item) => item.id === action.payload.id
-      );
-      if (isSelected) {
-        state.selected = state.selected.filter(
-          (item) => item.id !== action.payload.id
-        );
-      } else {
-        state.selected.push(action.payload);
-      }
-    },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
   },
 });
 
-export const { setData, toggleSelect, setCurrentPage } = chickenSlice.actions;
+export const { setData, setCurrentPage } = chickenSlice.actions;
 export const chickenReducer = chickenSlice.reducer;

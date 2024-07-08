@@ -11,7 +11,7 @@ import { setDetailActive } from "../../store/slices/detailSlice";
 const DetailSideTable = () => {
   const dispatch = useDispatch();
   const { selectedData, detailActive } = useSelector(
-    (state: RootState) => state.details
+    (state: RootState) => state.detail
   );
 
   // 사이드바를 닫는 액션 디스패치
