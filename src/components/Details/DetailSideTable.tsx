@@ -1,36 +1,34 @@
 import { FiX } from "react-icons/fi";
 import {
-  closeButton,
-  header,
-  tableBody,
-  tableHeader,
-  tableRow,
-  tableWrapper,
-  title,
-  wrapper,
+  closeButton, header, tableBody,
+  tableHeader, tableRow, tableWrapper,
+  title, wrapper,
 } from "./DetailSideTable.css";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
+import {  useDispatch, useSelector } from "react-redux";
+import {RootState } from "../../store";
+import { setDetailActive } from "../../store/slices/detailSlice";
 
 const DetailSideTable = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const detailOnSelectedItems = useSelector(
+  const dispatch = useDispatch();
+  const { selectedData, detailActive } = useSelector(
     (state: RootState) => state.details
   );
 
+  // 사이드바를 닫는 액션 디스패치
   const handleOnCloseButton = () => {
-    dispatch();
+    dispatch(setDetailActive(false));
   };
 
-  if (!detailOnSelectedItems.selectedData[0]) {
-    return <></>;
+  // 사이드바가 비활성화 상태면 null을 반환하여 렌더링하지 않음
+  if (!detailActive) {
+    return null;
   }
 
   return (
     <div className={wrapper}>
       <div className={header}>
         <div className={title}> 🍗 내가 가장 원하는 닭가슴살 제품은 ? 🍗 </div>
-        <FiX className={closeButton} onChange={handleOnCloseButton} />
+        <FiX className={closeButton} onClick={handleOnCloseButton} />
       </div>
       <table className={tableWrapper}>
         <thead className={tableHeader}>
@@ -51,7 +49,7 @@ const DetailSideTable = () => {
           </tr>
         </thead>
         <tbody className={tableBody}>
-          {detailOnSelectedItems.selectedData.map((item) => (
+          {selectedData.map((item) => (
             <tr key={item.id} className={tableRow}>
               <td>{item.id}</td>
               <td>{item.brand ? item.brand : "-"}</td>

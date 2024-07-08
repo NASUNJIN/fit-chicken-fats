@@ -1,14 +1,14 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ChickenData } from "../../types/ChickenData";
 
-// 타입
 type TDetailState = {
   selectedData: ChickenData[];
+  detailActive: boolean;
 };
 
-// 초기 상태
 const initialState: TDetailState = {
   selectedData: [],
+  detailActive: false,
 };
 
 const detailSlice = createSlice({
@@ -27,9 +27,13 @@ const detailSlice = createSlice({
       } else {
         state.selectedData.push(payload);
       }
+      state.detailActive = state.selectedData.length > 0; // 사이드바 활성화 여부 업데이트
+    },
+    setDetailActive: (state, action: PayloadAction<boolean>) => {
+      state.detailActive = action.payload;
     },
   },
 });
 
-export const { setDetailData } = detailSlice.actions;
+export const { setDetailData, setDetailActive } = detailSlice.actions;
 export const detailReducer = detailSlice.reducer;
