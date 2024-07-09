@@ -19,10 +19,10 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
 
     // 체크박스 선택
     const comparisonOnSelectedItems = useSelector(
-      (state: RootState) => state.comparison
+        (state: RootState) => state.comparison
     );
     const handleOnCheckboxChange = (item: ChickenData) => {
-      dispatch(setComparisonData(item));
+        dispatch(setComparisonData(item));
     };    
 
     // 데이터 가져오기

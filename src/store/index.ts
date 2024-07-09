@@ -2,9 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import chickenReducer from "./slices/chickenSlice";
 
 const store = configureStore({
-    reducer: {
-        chicken: chickenReducer,
-    },
+    reducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
