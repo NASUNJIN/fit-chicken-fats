@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ChickenData } from "../../types/ChickenData";
 
-type TComparisonState = {
+type ComparisonState = {
     comparisonData: ChickenData[];
     comparisonActive: boolean;
 };
 
-const initialState: TComparisonState = {
+const initialState: ComparisonState = {
     comparisonData: [],
     comparisonActive: false,
 };
