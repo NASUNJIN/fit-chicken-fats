@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 export const wrapper = style({
-    width: "1000px",
+    width: "70%",
     backgroundColor: "seagreen",
     display: "flex",
     alignItems: "center",
@@ -23,14 +23,40 @@ export const title = style({
     margin: "auto",
 });
 
-export const closeButton = style({
-    fontSize: "30px",
-    marginLeft: "-50px",
-    marginRight: "20px",
+export const button = style({
+    fontSize: "20px",
+    fontWeight: "bold",
     opacity: "0.5",
+    display: "flex",
+    margin: "auto",
+});
+
+export const closeButton = style({
+    margin: "10px",
+    padding: "10px",
     ":hover": {
         opacity: 1.0,
+        backgroundColor: "yellow",
     },
+    cursor: "pointer",
+    borderRadius: "15px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+});
+
+export const clearButton = style({
+    margin: "10px",
+    padding: "10px",
+    ":hover": {
+        opacity: 1.0,
+        backgroundColor: "red",
+    },
+    cursor: "pointer",
+    borderRadius: "15px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 });
 
 export const tableWrapper = style({

@@ -1,5 +1,7 @@
-import { FiX } from "react-icons/fi";
+import { FiMinusSquare, FiXSquare } from "react-icons/fi";
 import {
+    button,
+    clearButton,
     closeButton,
     header,
     tableBody,
@@ -11,7 +13,7 @@ import {
 } from "./ComparisonTable.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { setComparisonActive } from "../../store/slices/comparisonSlice";
+import { setComparisonActive, clearComparisonData } from "../../store/slices/comparisonSlice";
 
 const ComparisonTable = () => {
     const dispatch = useDispatch();
@@ -19,9 +21,14 @@ const ComparisonTable = () => {
         (state: RootState) => state.comparison
     );
 
-    // 사이드바를 닫는 액션 디스패치
+    // 선택 비교 창 닫음
     const handleOnCloseButton = () => {
         dispatch(setComparisonActive(false));
+    };
+    
+    // 모든 체크박스 선택 초기화
+    const handleOnClearButton = () => {
+        dispatch(clearComparisonData());
     };
 
     // 사이드바가 비활성화 상태면 null을 반환하여 렌더링하지 않음
@@ -33,10 +40,18 @@ const ComparisonTable = () => {
         <div className={wrapper}>
             <div className={header}>
                 <div className={title}>
-                    {" "}
-                    🍗 내가 가장 원하는 닭가슴살 제품은 ? 🍗{" "}
+                    🍗 내가 가장 원하는 닭가슴살 제품은 ? 🍗
                 </div>
-                <FiX className={closeButton} onClick={handleOnCloseButton} />
+                <div className={button}>
+                    <div className={closeButton} onClick={handleOnCloseButton}>
+                        <FiMinusSquare />
+                        선택 창 숨기기
+                    </div>
+                    <div className={clearButton} onClick={handleOnClearButton}>
+                        <FiXSquare />
+                        선택 전체 해제
+                    </div>
+                </div>
             </div>
             <table className={tableWrapper}>
                 <thead className={tableHeader}>

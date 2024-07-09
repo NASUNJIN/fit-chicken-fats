@@ -27,14 +27,19 @@ const comparisonSlice = createSlice({
             } else {
                 state.comparisonData.push(payload);
             }
-            state.comparisonActive = state.comparisonData.length > 0; // 사이드바 활성화 여부 업데이트
+            // 사이드바 활성화 여부 업데이트
+            state.comparisonActive = state.comparisonData.length > 0;
         },
         setComparisonActive: (state, action: PayloadAction<boolean>) => {
             state.comparisonActive = action.payload;
         },
+        clearComparisonData: (state) => {
+            state.comparisonData = [];
+            state.comparisonActive = false;
+        },
     },
 });
 
-export const { setComparisonData, setComparisonActive } =
+export const { setComparisonData, setComparisonActive, clearComparisonData } =
     comparisonSlice.actions;
 export const comparisonReducer = comparisonSlice.reducer;
