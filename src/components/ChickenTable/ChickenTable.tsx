@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from "../../store";
 import { setCurrentPage, setData } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
-import { setDetailData } from "../../store/slices/detailSlice";
+import { setComparisonData } from "../../store/slices/comparisonSlice";
 
 interface ChickenTableProps {
     filteredData: ChickenData[];
@@ -18,11 +18,11 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
     const pageNumbersPerPage = 10;
 
     // 체크박스 선택
-    const detailOnSelectedItems = useSelector(
-      (state: RootState) => state.detail
+    const comparisonOnSelectedItems = useSelector(
+      (state: RootState) => state.comparison
     );
     const handleOnCheckboxChange = (item: ChickenData) => {
-      dispatch(setDetailData(item));
+      dispatch(setComparisonData(item));
     };    
 
     // 데이터 가져오기
@@ -77,7 +77,7 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
                   <input
                     type="checkbox"
                     checked={
-                      !!detailOnSelectedItems.selectedData.find(
+                      !!comparisonOnSelectedItems.comparisonData.find(
                         (i) => i.id === item.id
                       )
                     }

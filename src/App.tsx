@@ -3,7 +3,7 @@ import ChickenTable from './components/ChickenTable/ChickenTable';
 import ProductsFilter from './components/Products/ProductsFilter';
 import { ChickenData } from './types/ChickenData';
 import './App.css';
-import DetailSideTable from "./components/Details/DetailSideTable";
+import ComparisonTable from './components/Comparison/ComparisonTable';
 
 const App: React.FC = () => {
   const [filteredData, setFilteredData] = useState<ChickenData[]>([]);
@@ -12,7 +12,7 @@ const App: React.FC = () => {
     <div>
       <ProductsFilter onFilter={setFilteredData} />
       <ChickenTable filteredData={filteredData} />
-      <DetailSideTable />
+      <ComparisonTable />
     </div>
   );
 }

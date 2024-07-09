@@ -3,24 +3,24 @@ import {
   closeButton, header, tableBody,
   tableHeader, tableRow, tableWrapper,
   title, wrapper,
-} from "./DetailSideTable.css";
-import {  useDispatch, useSelector } from "react-redux";
-import {RootState } from "../../store";
-import { setDetailActive } from "../../store/slices/detailSlice";
+} from "./ComparisonTable.css";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { setComparisonActive } from "../../store/slices/comparisonSlice";
 
-const DetailSideTable = () => {
+const ComparisonTable = () => {
   const dispatch = useDispatch();
-  const { selectedData, detailActive } = useSelector(
-    (state: RootState) => state.detail
+  const { comparisonData, comparisonActive } = useSelector(
+    (state: RootState) => state.comparison
   );
 
   // 사이드바를 닫는 액션 디스패치
   const handleOnCloseButton = () => {
-    dispatch(setDetailActive(false));
+    dispatch(setComparisonActive(false));
   };
 
   // 사이드바가 비활성화 상태면 null을 반환하여 렌더링하지 않음
-  if (!detailActive) {
+  if (!comparisonActive) {
     return null;
   }
 
@@ -49,7 +49,7 @@ const DetailSideTable = () => {
           </tr>
         </thead>
         <tbody className={tableBody}>
-          {selectedData.map((item) => (
+          {comparisonData.map((item) => (
             <tr key={item.id} className={tableRow}>
               <td>{item.id}</td>
               <td>{item.brand ? item.brand : "-"}</td>
@@ -72,4 +72,4 @@ const DetailSideTable = () => {
   );
 };
 
-export default DetailSideTable;
+export default ComparisonTable;
