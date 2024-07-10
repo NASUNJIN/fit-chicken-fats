@@ -6,7 +6,7 @@ interface ProductsFilterProps {
   onFilter: (filteredData: ChickenData[]) => void;
 }
 
-const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
+const ProductsFilter: React.FC<ProductsFilterProps> = ({ onFilter }) => {
   const [products, setProducts] = useState<ChickenData[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
